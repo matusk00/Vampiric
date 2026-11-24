@@ -6,8 +6,6 @@ extends CharacterBody2D
 @export var bullet_speed : float = 10
 
 var direction : Vector2
-var bullet_instance = bullet.instance() 
-var bullet = preload("res://Assets/Bullet.png")
 
 # Gets the input direction 
 func _physics_process(delta : float) -> void:
@@ -35,14 +33,3 @@ func _physics_process(delta : float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, movement_speed)
 	
 	move_and_slide()
-	
-		# Gets input for shooting
-	if Input.is_action_just_pressed("Shoot"):
-		shoot()
-	
-func shoot():
-	bullet_instance.position = get_global_position()
-	get_tree().call_deferred("add_child",bullet_instance)
-	
-	
-	
